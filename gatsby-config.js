@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Youjin P",
     description: "Youjin P",
+
   },
   plugins: [
     {
@@ -9,13 +10,6 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: "blog",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: "assets",
       },
     },
     {
@@ -48,7 +42,6 @@ module.exports = {
         // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    "gatsby-plugin-feed",
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-typography",
