@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import React from "react";
 import { Link, graphql, PageRendererProps } from "gatsby";
+import { Disqus, CommentCount } from "gatsby-plugin-disqus";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -17,6 +18,17 @@ const BlogPostTemplate = (
   const title = frontmatter.title!;
   const html = post.html!;
   const siteTitle = data.site!.siteMetadata!.title!;
+
+  console.log("props: ", props);
+  console.log("props: ", props);
+
+  const disqusConfig = {
+    url: `${`youj.in${props.location!.pathname}`}`,
+    identifier: data.markdownRemark?.id,
+    title,
+  };
+
+  console.log("disqusConfig: ", disqusConfig);
 
   // const post = props.data.markdownRemark;
   // const siteTitle = props.data.site.siteMetadata.title;
@@ -52,7 +64,9 @@ const BlogPostTemplate = (
           }}
         />
       </article>
+      <CommentCount config={disqusConfig} placeholder="" />
 
+      <Disqus config={disqusConfig} />
       <nav>
         <ul
           style={{
