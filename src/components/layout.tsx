@@ -7,48 +7,43 @@ const Layout = (
   props: PageRendererProps & { title: string; children: ReactNode }
 ) => {
   const rootPath = "/";
-  let header;
 
-  if (props.location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: "none",
-            color: "inherit",
-          }}
-          to="/"
-        >
-          {props.title}
-        </Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: "Montserrat, sans-serif",
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: "none",
-            color: "inherit",
-          }}
-          to="/"
-        >
-          {props.title}
-        </Link>
-      </h3>
-    );
-  }
+  const linkDisplay = (
+    <Link
+      style={{
+        boxShadow: "none",
+        color: "inherit",
+      }}
+      to="/"
+    >
+      {props.title}
+    </Link>
+  );
+
+  const bigHeader = (
+    <h1
+      style={{
+        ...scale(1.5),
+        marginBottom: rhythm(1.5),
+        marginTop: 0,
+      }}
+    >
+      {linkDisplay}
+    </h1>
+  );
+
+  const smallHeader = (
+    <h3
+      style={{
+        fontFamily: "Montserrat, sans-serif",
+        marginTop: 0,
+      }}
+    >
+      {linkDisplay}
+    </h3>
+  );
+
+
   return (
     <div
       style={{
@@ -58,7 +53,7 @@ const Layout = (
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
       }}
     >
-      <header>{header}</header>
+      <header>{props.location.pathname === rootPath ? bigHeader : smallHeader}</header>
       <main>{props.children}</main>
       <footer />
     </div>
