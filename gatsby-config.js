@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: "Youjin P",
     description: "Youjin P",
-
   },
   plugins: [
     {
@@ -31,6 +30,20 @@ module.exports = {
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
+          "gatsby-remark-numbered-footnotes",
+          {
+            resolve: "gatsby-remark-footnotes",
+            options: {
+              footnoteBackRefPreviousElementDisplay: "inline",
+              footnoteBackRefDisplay: "inline",
+              footnoteBackRefInnerText: "^", // Defaults to: "↩"
+              // use if you want the Wikipedia style ^ link without an underline beneath it
+              footnoteBackRefAnchorStyle: "text-decoration: none;",
+              // use "front" for Wikipedia style ^ links
+              footnoteBackRefInnerTextStartPosition: "front",
+              useFootnoteMarkerText: false, // Defaults to false
+            },
+          },
         ],
       },
     },

@@ -682,10 +682,10 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
   ChildMarkdownRemarkFrontmatterDescription = 'childMarkdownRemark___frontmatter___description',
+  ChildMarkdownRemarkFrontmatterPath = 'childMarkdownRemark___frontmatter___path',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
-  ChildMarkdownRemarkFieldsSlug = 'childMarkdownRemark___fields___slug',
   ChildMarkdownRemarkHtml = 'childMarkdownRemark___html',
   ChildMarkdownRemarkHtmlAst = 'childMarkdownRemark___htmlAst',
   ChildMarkdownRemarkExcerptAst = 'childMarkdownRemark___excerptAst',
@@ -1384,7 +1384,6 @@ export type MarkdownRemark = Node & {
   excerpt?: Maybe<Scalars['String']>,
   rawMarkdownBody?: Maybe<Scalars['String']>,
   fileAbsolutePath?: Maybe<Scalars['String']>,
-  fields?: Maybe<MarkdownRemarkFields>,
   html?: Maybe<Scalars['String']>,
   htmlAst?: Maybe<Scalars['JSON']>,
   excerptAst?: Maybe<Scalars['JSON']>,
@@ -1450,19 +1449,15 @@ export type MarkdownRemarkEdge = {
   previous?: Maybe<MarkdownRemark>,
 };
 
-export type MarkdownRemarkFields = {
-  slug?: Maybe<Scalars['String']>,
-};
-
 export enum MarkdownRemarkFieldsEnum {
   Id = 'id',
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
   FrontmatterDescription = 'frontmatter___description',
+  FrontmatterPath = 'frontmatter___path',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
-  FieldsSlug = 'fields___slug',
   Html = 'html',
   HtmlAst = 'htmlAst',
   ExcerptAst = 'excerptAst',
@@ -1562,17 +1557,12 @@ export enum MarkdownRemarkFieldsEnum {
   InternalType = 'internal___type'
 }
 
-export type MarkdownRemarkFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>,
-};
-
 export type MarkdownRemarkFilterInput = {
   id?: Maybe<StringQueryOperatorInput>,
   frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>,
   excerpt?: Maybe<StringQueryOperatorInput>,
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>,
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>,
-  fields?: Maybe<MarkdownRemarkFieldsFilterInput>,
   html?: Maybe<StringQueryOperatorInput>,
   htmlAst?: Maybe<JsonQueryOperatorInput>,
   excerptAst?: Maybe<JsonQueryOperatorInput>,
@@ -1589,6 +1579,7 @@ export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
   description?: Maybe<Scalars['String']>,
+  path?: Maybe<Scalars['String']>,
 };
 
 
@@ -1603,6 +1594,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
+  path?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1855,7 +1847,6 @@ export type QueryMarkdownRemarkArgs = {
   excerpt?: Maybe<StringQueryOperatorInput>,
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>,
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>,
-  fields?: Maybe<MarkdownRemarkFieldsFilterInput>,
   html?: Maybe<StringQueryOperatorInput>,
   htmlAst?: Maybe<JsonQueryOperatorInput>,
   excerptAst?: Maybe<JsonQueryOperatorInput>,
@@ -2146,11 +2137,7 @@ export type SiteEdge = {
 export enum SiteFieldsEnum {
   BuildTime = 'buildTime',
   SiteMetadataTitle = 'siteMetadata___title',
-  SiteMetadataAuthorName = 'siteMetadata___author___name',
-  SiteMetadataAuthorSummary = 'siteMetadata___author___summary',
   SiteMetadataDescription = 'siteMetadata___description',
-  SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
-  SiteMetadataSocialTwitter = 'siteMetadata___social___twitter',
   Port = 'port',
   Host = 'host',
   Polyfill = 'polyfill',
@@ -2304,67 +2291,51 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
-  slug?: Maybe<Scalars['String']>,
+  path?: Maybe<Scalars['String']>,
   previous?: Maybe<SitePageContextPrevious>,
   next?: Maybe<SitePageContextNext>,
 };
 
 export type SitePageContextFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>,
+  path?: Maybe<StringQueryOperatorInput>,
   previous?: Maybe<SitePageContextPreviousFilterInput>,
   next?: Maybe<SitePageContextNextFilterInput>,
 };
 
 export type SitePageContextNext = {
-  fields?: Maybe<SitePageContextNextFields>,
   frontmatter?: Maybe<SitePageContextNextFrontmatter>,
 };
 
-export type SitePageContextNextFields = {
-  slug?: Maybe<Scalars['String']>,
-};
-
-export type SitePageContextNextFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>,
-};
-
 export type SitePageContextNextFilterInput = {
-  fields?: Maybe<SitePageContextNextFieldsFilterInput>,
   frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>,
 };
 
 export type SitePageContextNextFrontmatter = {
   title?: Maybe<Scalars['String']>,
+  path?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextNextFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
+  path?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageContextPrevious = {
-  fields?: Maybe<SitePageContextPreviousFields>,
   frontmatter?: Maybe<SitePageContextPreviousFrontmatter>,
 };
 
-export type SitePageContextPreviousFields = {
-  slug?: Maybe<Scalars['String']>,
-};
-
-export type SitePageContextPreviousFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>,
-};
-
 export type SitePageContextPreviousFilterInput = {
-  fields?: Maybe<SitePageContextPreviousFieldsFilterInput>,
   frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>,
 };
 
 export type SitePageContextPreviousFrontmatter = {
   title?: Maybe<Scalars['String']>,
+  path?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextPreviousFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
+  path?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageEdge = {
@@ -2466,11 +2437,11 @@ export enum SitePageFieldsEnum {
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  ContextSlug = 'context___slug',
-  ContextPreviousFieldsSlug = 'context___previous___fields___slug',
+  ContextPath = 'context___path',
   ContextPreviousFrontmatterTitle = 'context___previous___frontmatter___title',
-  ContextNextFieldsSlug = 'context___next___fields___slug',
+  ContextPreviousFrontmatterPath = 'context___previous___frontmatter___path',
   ContextNextFrontmatterTitle = 'context___next___frontmatter___title',
+  ContextNextFrontmatterPath = 'context___next___frontmatter___path',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
@@ -2522,13 +2493,24 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
+  PluginCreatorPluginOptionsPathPrefix = 'pluginCreator___pluginOptions___pathPrefix',
   PluginCreatorPluginOptionsWrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
-  PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
-  PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
-  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
-  PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
-  PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
-  PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',
+  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
+  PluginCreatorPluginOptionsLinkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
+  PluginCreatorPluginOptionsShowCaptions = 'pluginCreator___pluginOptions___showCaptions',
+  PluginCreatorPluginOptionsMarkdownCaptions = 'pluginCreator___pluginOptions___markdownCaptions',
+  PluginCreatorPluginOptionsWithWebp = 'pluginCreator___pluginOptions___withWebp',
+  PluginCreatorPluginOptionsTracedSvg = 'pluginCreator___pluginOptions___tracedSVG',
+  PluginCreatorPluginOptionsLoading = 'pluginCreator___pluginOptions___loading',
+  PluginCreatorPluginOptionsDisableBgImageOnAlpha = 'pluginCreator___pluginOptions___disableBgImageOnAlpha',
+  PluginCreatorPluginOptionsDisableBgImage = 'pluginCreator___pluginOptions___disableBgImage',
+  PluginCreatorPluginOptionsIgnoreFileExtensions = 'pluginCreator___pluginOptions___ignoreFileExtensions',
+  PluginCreatorPluginOptionsFootnoteBackRefPreviousElementDisplay = 'pluginCreator___pluginOptions___footnoteBackRefPreviousElementDisplay',
+  PluginCreatorPluginOptionsFootnoteBackRefDisplay = 'pluginCreator___pluginOptions___footnoteBackRefDisplay',
+  PluginCreatorPluginOptionsFootnoteBackRefInnerText = 'pluginCreator___pluginOptions___footnoteBackRefInnerText',
+  PluginCreatorPluginOptionsFootnoteBackRefAnchorStyle = 'pluginCreator___pluginOptions___footnoteBackRefAnchorStyle',
+  PluginCreatorPluginOptionsFootnoteBackRefInnerTextStartPosition = 'pluginCreator___pluginOptions___footnoteBackRefInnerTextStartPosition',
+  PluginCreatorPluginOptionsUseFootnoteMarkerText = 'pluginCreator___pluginOptions___useFootnoteMarkerText',
   PluginCreatorPluginOptionsPathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
@@ -2724,19 +2706,47 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsName = 'pluginOptions___plugins___name',
   PluginOptionsPluginsVersion = 'pluginOptions___plugins___version',
   PluginOptionsPluginsPluginOptionsMaxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
+  PluginOptionsPluginsPluginOptionsPathPrefix = 'pluginOptions___plugins___pluginOptions___pathPrefix',
   PluginOptionsPluginsPluginOptionsWrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
+  PluginOptionsPluginsPluginOptionsBackgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
+  PluginOptionsPluginsPluginOptionsLinkImagesToOriginal = 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal',
+  PluginOptionsPluginsPluginOptionsShowCaptions = 'pluginOptions___plugins___pluginOptions___showCaptions',
+  PluginOptionsPluginsPluginOptionsMarkdownCaptions = 'pluginOptions___plugins___pluginOptions___markdownCaptions',
+  PluginOptionsPluginsPluginOptionsWithWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
+  PluginOptionsPluginsPluginOptionsTracedSvg = 'pluginOptions___plugins___pluginOptions___tracedSVG',
+  PluginOptionsPluginsPluginOptionsLoading = 'pluginOptions___plugins___pluginOptions___loading',
+  PluginOptionsPluginsPluginOptionsDisableBgImageOnAlpha = 'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha',
+  PluginOptionsPluginsPluginOptionsDisableBgImage = 'pluginOptions___plugins___pluginOptions___disableBgImage',
+  PluginOptionsPluginsPluginOptionsIgnoreFileExtensions = 'pluginOptions___plugins___pluginOptions___ignoreFileExtensions',
+  PluginOptionsPluginsPluginOptionsFootnoteBackRefPreviousElementDisplay = 'pluginOptions___plugins___pluginOptions___footnoteBackRefPreviousElementDisplay',
+  PluginOptionsPluginsPluginOptionsFootnoteBackRefDisplay = 'pluginOptions___plugins___pluginOptions___footnoteBackRefDisplay',
+  PluginOptionsPluginsPluginOptionsFootnoteBackRefInnerText = 'pluginOptions___plugins___pluginOptions___footnoteBackRefInnerText',
+  PluginOptionsPluginsPluginOptionsFootnoteBackRefAnchorStyle = 'pluginOptions___plugins___pluginOptions___footnoteBackRefAnchorStyle',
+  PluginOptionsPluginsPluginOptionsFootnoteBackRefInnerTextStartPosition = 'pluginOptions___plugins___pluginOptions___footnoteBackRefInnerTextStartPosition',
+  PluginOptionsPluginsPluginOptionsUseFootnoteMarkerText = 'pluginOptions___plugins___pluginOptions___useFootnoteMarkerText',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
   PluginOptionsPluginsPluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsName = 'pluginOptions___name',
   PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
+  PluginOptionsPathPrefix = 'pluginOptions___pathPrefix',
   PluginOptionsWrapperStyle = 'pluginOptions___wrapperStyle',
-  PluginOptionsShortName = 'pluginOptions___short_name',
-  PluginOptionsStartUrl = 'pluginOptions___start_url',
-  PluginOptionsBackgroundColor = 'pluginOptions___background_color',
-  PluginOptionsThemeColor = 'pluginOptions___theme_color',
-  PluginOptionsDisplay = 'pluginOptions___display',
-  PluginOptionsIcon = 'pluginOptions___icon',
+  PluginOptionsBackgroundColor = 'pluginOptions___backgroundColor',
+  PluginOptionsLinkImagesToOriginal = 'pluginOptions___linkImagesToOriginal',
+  PluginOptionsShowCaptions = 'pluginOptions___showCaptions',
+  PluginOptionsMarkdownCaptions = 'pluginOptions___markdownCaptions',
+  PluginOptionsWithWebp = 'pluginOptions___withWebp',
+  PluginOptionsTracedSvg = 'pluginOptions___tracedSVG',
+  PluginOptionsLoading = 'pluginOptions___loading',
+  PluginOptionsDisableBgImageOnAlpha = 'pluginOptions___disableBgImageOnAlpha',
+  PluginOptionsDisableBgImage = 'pluginOptions___disableBgImage',
+  PluginOptionsIgnoreFileExtensions = 'pluginOptions___ignoreFileExtensions',
+  PluginOptionsFootnoteBackRefPreviousElementDisplay = 'pluginOptions___footnoteBackRefPreviousElementDisplay',
+  PluginOptionsFootnoteBackRefDisplay = 'pluginOptions___footnoteBackRefDisplay',
+  PluginOptionsFootnoteBackRefInnerText = 'pluginOptions___footnoteBackRefInnerText',
+  PluginOptionsFootnoteBackRefAnchorStyle = 'pluginOptions___footnoteBackRefAnchorStyle',
+  PluginOptionsFootnoteBackRefInnerTextStartPosition = 'pluginOptions___footnoteBackRefInnerTextStartPosition',
+  PluginOptionsUseFootnoteMarkerText = 'pluginOptions___useFootnoteMarkerText',
   PluginOptionsPathToConfigModule = 'pluginOptions___pathToConfigModule',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
@@ -2856,13 +2866,24 @@ export type SitePluginPluginOptions = {
   path?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
   maxWidth?: Maybe<Scalars['Int']>,
+  pathPrefix?: Maybe<Scalars['String']>,
   wrapperStyle?: Maybe<Scalars['String']>,
-  short_name?: Maybe<Scalars['String']>,
-  start_url?: Maybe<Scalars['String']>,
-  background_color?: Maybe<Scalars['String']>,
-  theme_color?: Maybe<Scalars['String']>,
-  display?: Maybe<Scalars['String']>,
-  icon?: Maybe<Scalars['String']>,
+  backgroundColor?: Maybe<Scalars['String']>,
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
+  showCaptions?: Maybe<Scalars['Boolean']>,
+  markdownCaptions?: Maybe<Scalars['Boolean']>,
+  withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
+  loading?: Maybe<Scalars['String']>,
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>,
+  disableBgImage?: Maybe<Scalars['Boolean']>,
+  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>,
+  footnoteBackRefPreviousElementDisplay?: Maybe<Scalars['String']>,
+  footnoteBackRefDisplay?: Maybe<Scalars['String']>,
+  footnoteBackRefInnerText?: Maybe<Scalars['String']>,
+  footnoteBackRefAnchorStyle?: Maybe<Scalars['String']>,
+  footnoteBackRefInnerTextStartPosition?: Maybe<Scalars['String']>,
+  useFootnoteMarkerText?: Maybe<Scalars['Boolean']>,
   pathToConfigModule?: Maybe<Scalars['String']>,
   pathCheck?: Maybe<Scalars['Boolean']>,
 };
@@ -2872,13 +2893,24 @@ export type SitePluginPluginOptionsFilterInput = {
   path?: Maybe<StringQueryOperatorInput>,
   name?: Maybe<StringQueryOperatorInput>,
   maxWidth?: Maybe<IntQueryOperatorInput>,
+  pathPrefix?: Maybe<StringQueryOperatorInput>,
   wrapperStyle?: Maybe<StringQueryOperatorInput>,
-  short_name?: Maybe<StringQueryOperatorInput>,
-  start_url?: Maybe<StringQueryOperatorInput>,
-  background_color?: Maybe<StringQueryOperatorInput>,
-  theme_color?: Maybe<StringQueryOperatorInput>,
-  display?: Maybe<StringQueryOperatorInput>,
-  icon?: Maybe<StringQueryOperatorInput>,
+  backgroundColor?: Maybe<StringQueryOperatorInput>,
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
+  showCaptions?: Maybe<BooleanQueryOperatorInput>,
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
+  withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
+  loading?: Maybe<StringQueryOperatorInput>,
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>,
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>,
+  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefPreviousElementDisplay?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefDisplay?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefInnerText?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefAnchorStyle?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefInnerTextStartPosition?: Maybe<StringQueryOperatorInput>,
+  useFootnoteMarkerText?: Maybe<BooleanQueryOperatorInput>,
   pathToConfigModule?: Maybe<StringQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
 };
@@ -2909,12 +2941,46 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   maxWidth?: Maybe<Scalars['Int']>,
+  pathPrefix?: Maybe<Scalars['String']>,
   wrapperStyle?: Maybe<Scalars['String']>,
+  backgroundColor?: Maybe<Scalars['String']>,
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
+  showCaptions?: Maybe<Scalars['Boolean']>,
+  markdownCaptions?: Maybe<Scalars['Boolean']>,
+  withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
+  loading?: Maybe<Scalars['String']>,
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>,
+  disableBgImage?: Maybe<Scalars['Boolean']>,
+  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>,
+  footnoteBackRefPreviousElementDisplay?: Maybe<Scalars['String']>,
+  footnoteBackRefDisplay?: Maybe<Scalars['String']>,
+  footnoteBackRefInnerText?: Maybe<Scalars['String']>,
+  footnoteBackRefAnchorStyle?: Maybe<Scalars['String']>,
+  footnoteBackRefInnerTextStartPosition?: Maybe<Scalars['String']>,
+  useFootnoteMarkerText?: Maybe<Scalars['Boolean']>,
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>,
+  pathPrefix?: Maybe<StringQueryOperatorInput>,
   wrapperStyle?: Maybe<StringQueryOperatorInput>,
+  backgroundColor?: Maybe<StringQueryOperatorInput>,
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
+  showCaptions?: Maybe<BooleanQueryOperatorInput>,
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
+  withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
+  loading?: Maybe<StringQueryOperatorInput>,
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>,
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>,
+  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefPreviousElementDisplay?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefDisplay?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefInnerText?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefAnchorStyle?: Maybe<StringQueryOperatorInput>,
+  footnoteBackRefInnerTextStartPosition?: Maybe<StringQueryOperatorInput>,
+  useFootnoteMarkerText?: Maybe<BooleanQueryOperatorInput>,
 };
 
 export type SitePluginSortInput = {
@@ -2924,36 +2990,12 @@ export type SitePluginSortInput = {
 
 export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>,
-  author?: Maybe<SiteSiteMetadataAuthor>,
   description?: Maybe<Scalars['String']>,
-  siteUrl?: Maybe<Scalars['String']>,
-  social?: Maybe<SiteSiteMetadataSocial>,
-};
-
-export type SiteSiteMetadataAuthor = {
-  name?: Maybe<Scalars['String']>,
-  summary?: Maybe<Scalars['String']>,
-};
-
-export type SiteSiteMetadataAuthorFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>,
-  summary?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
-  author?: Maybe<SiteSiteMetadataAuthorFilterInput>,
   description?: Maybe<StringQueryOperatorInput>,
-  siteUrl?: Maybe<StringQueryOperatorInput>,
-  social?: Maybe<SiteSiteMetadataSocialFilterInput>,
-};
-
-export type SiteSiteMetadataSocial = {
-  twitter?: Maybe<Scalars['String']>,
-};
-
-export type SiteSiteMetadataSocialFilterInput = {
-  twitter?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SiteSortInput = {

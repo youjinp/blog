@@ -6,34 +6,38 @@ import { PageProps, Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { rhythm } from "../utils/typography";
+import { Query } from "../@types/graphql-types";
 
-const BlogIndex = (props: PageProps<Data>) => {
-  const siteTitle = props.data.site.siteMetadata.title;
+const BlogIndex = (props: PageProps<Query>) => {
+  const siteTitle = props.data.site!.siteMetadata!.title!;
   const posts = props.data.allMarkdownRemark.edges;
 
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO title="All posts" />
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug;
+        const title = node.frontmatter!.title!;
+        const path = node.frontmatter!.path!;
+        const date = node.frontmatter!.date!;
+        const description = node.frontmatter!.description || node.excerpt || "";
         return (
-          <article key={node.fields.slug}>
+          <article key={path}>
             <header>
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: "none" }} to={node.fields.slug}>
+                <Link style={{ boxShadow: "none" }} to={path}>
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{date}</small>
             </header>
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: description,
                 }}
               />
             </section>
@@ -46,29 +50,6 @@ const BlogIndex = (props: PageProps<Data>) => {
 
 export default BlogIndex;
 
-type Data = {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-  allMarkdownRemark: {
-    edges: {
-      node: {
-        excerpt: string
-        frontmatter: {
-          title: string
-          date: string
-          description: string
-        }
-        fields: {
-          slug: string
-        }
-      }
-    }[]
-  }
-}
-
 export const pageQuery = graphql`
   query {
     site {
@@ -80,13 +61,11 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
-          fields {
-            slug
-          }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            path
           }
         }
       }
