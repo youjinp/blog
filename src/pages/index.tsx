@@ -12,38 +12,45 @@ const BlogIndex = (props: PageProps<Query>) => {
   const siteTitle = props.data.site!.siteMetadata!.title!;
   const posts = props.data.allMarkdownRemark.edges;
 
+  const article = (articleProps: {path: string, date: string, title: string, excerpt: string }) => {
+    const title = (
+      <h3
+        style={{
+          marginBottom: rhythm(1 / 4),
+        }}
+      >
+        <Link style={{ boxShadow: "none" }} to={articleProps.path}>
+          {articleProps.title}
+        </Link>
+      </h3>
+    );
+
+    return (
+      <article key={articleProps.path}>
+        <header>
+          {title}
+          <small>{articleProps.date}</small>
+        </header>
+        <section>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: articleProps.excerpt || "",
+            }}
+          />
+        </section>
+      </article>
+    );
+  };
+
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO title="All posts" />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter!.title!;
-        const path = node.frontmatter!.path!;
-        const date = node.frontmatter!.date!;
-        const description = node.frontmatter!.description || node.excerpt || "";
-        return (
-          <article key={path}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: "none" }} to={path}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: description,
-                }}
-              />
-            </section>
-          </article>
-        );
-      })}
+      {posts.map(({ node }) => article({
+        path: node.frontmatter!.path!,
+        date: node.frontmatter!.date!,
+        title: node.frontmatter!.title!,
+        excerpt: node.excerpt || "",
+      }))}
     </Layout>
   );
 };
