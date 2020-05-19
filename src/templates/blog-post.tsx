@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import React from "react";
 import { Link, graphql, PageRendererProps } from "gatsby";
+import { DiscussionEmbed } from "disqus-react";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -17,6 +18,15 @@ const BlogPostTemplate = (
   const title = frontmatter.title!;
   const html = post.html!;
   const siteTitle = data.site!.siteMetadata!.title!;
+
+  console.log("props: ", props);
+  const disqusConfig = {
+    url: process.env.GATSBY_DOMAIN! + post.frontmatter!.path!,
+    identifier: post.frontmatter!.path!,
+    title,
+  };
+
+  console.log("disqusConfig: ", disqusConfig);
 
   // const post = props.data.markdownRemark;
   // const siteTitle = props.data.site.siteMetadata.title;
@@ -53,6 +63,10 @@ const BlogPostTemplate = (
         />
       </article>
 
+      <DiscussionEmbed
+        shortname={process.env.GATSBY_DISQUS_NAME!}
+        config={disqusConfig}
+      />
       <nav>
         <ul
           style={{
@@ -100,6 +114,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        path
       }
     }
   }
