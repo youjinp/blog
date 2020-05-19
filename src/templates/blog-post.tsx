@@ -19,14 +19,11 @@ const BlogPostTemplate = (
   const html = post.html!;
   const siteTitle = data.site!.siteMetadata!.title!;
 
-  console.log("props: ", props);
   const disqusConfig = {
-    url: process.env.GATSBY_DOMAIN! + post.frontmatter!.path!,
+    url: props.location.href,
     identifier: post.frontmatter!.path!,
     title,
   };
-
-  console.log("disqusConfig: ", disqusConfig);
 
   // const post = props.data.markdownRemark;
   // const siteTitle = props.data.site.siteMetadata.title;
