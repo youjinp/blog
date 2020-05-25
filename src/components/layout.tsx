@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { Link, PageRendererProps } from "gatsby";
 
+import { Helmet } from "react-helmet";
 import { rhythm, scale } from "../utils/typography";
 
 const Layout = (
@@ -45,18 +46,23 @@ const Layout = (
 
 
   return (
-    <div
-      style={{
-        marginLeft: "auto",
-        marginRight: "auto",
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{props.location.pathname === rootPath ? bigHeader : smallHeader}</header>
-      <main>{props.children}</main>
-      <footer />
-    </div>
+    <>
+      <Helmet>
+        <link href="/fonts/freightSansPro/stylesheet.css" rel="stylesheet" type="text/css" />
+      </Helmet>
+      <div
+        style={{
+          marginLeft: "auto",
+          marginRight: "auto",
+          maxWidth: rhythm(24),
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        }}
+      >
+        <header>{props.location.pathname === rootPath ? bigHeader : smallHeader}</header>
+        <main>{props.children}</main>
+        <footer />
+      </div>
+    </>
   );
 };
 
