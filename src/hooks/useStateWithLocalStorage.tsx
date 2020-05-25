@@ -1,16 +1,21 @@
 // https://www.robinwieruch.de/local-storage-react
 
-import React from "react";
+import React, { useEffect } from "react";
 
 export const useStateWithLocalStorage = (localStorageKey: string):
-[string, React.Dispatch<React.SetStateAction<string>>] => {
-  const [value, setValue] = React.useState(
-    localStorage.getItem(localStorageKey) || ""
-  );
+[string, (v: string)=>void] => {
+  const [value, _setValue] = React.useState("");
 
-  React.useEffect(() => {
-    localStorage.setItem(localStorageKey, value);
-  }, [value]);
+  // get from local storage once mounted
+  // otherwise gatsby fails
+  useEffect(() => {
+    _setValue(localStorage.getItem(localStorageKey) || "");
+  }, []);
+
+  const setValue = (v: string) => {
+    localStorage.setItem(localStorageKey, v);
+    _setValue(v);
+  };
 
   return [value, setValue];
 };
