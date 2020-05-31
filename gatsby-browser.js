@@ -1,5 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 // custom typefaces
-import "typeface-montserrat";
-import "typeface-merriweather";
+import React from "react";
+import { DarkModeProvider } from "./src/context/darkModeContext";
 
-import "prismjs/themes/prism.css";
+export const wrapRootElement = ({ element }) => (
+  <DarkModeProvider>{element}</DarkModeProvider>
+);

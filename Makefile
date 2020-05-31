@@ -6,4 +6,5 @@ build:
 	@gatsby build
 
 codegen:
+	# generate types for graphql
 	@npm run codegen

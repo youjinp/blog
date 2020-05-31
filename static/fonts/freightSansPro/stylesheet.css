@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'FreightSansProBlack';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProBlack-Regular.eot');
     src: local('FreightSans Pro Black'), local('FreightSansProBlack-Regular'),
         url('FreightSansProBlack-Regular.eot?#iefix') format('embedded-opentype'),
@@ -11,7 +11,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProBlack';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProBlack-Italic.eot');
     src: local('FreightSans Pro Black Italic'), local('FreightSansProBlack-Italic'),
         url('FreightSansProBlack-Italic.eot?#iefix') format('embedded-opentype'),
@@ -23,7 +23,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProBold';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProBold-Regular.eot');
     src: local('FreightSans Pro Bold'), local('FreightSansProBold-Regular'),
         url('FreightSansProBold-Regular.eot?#iefix') format('embedded-opentype'),
@@ -35,7 +35,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProLight';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProLight-Regular.eot');
     src: local('FreightSans Pro Light'), local('FreightSansProLight-Regular'),
         url('FreightSansProLight-Regular.eot?#iefix') format('embedded-opentype'),
@@ -47,7 +47,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProBook';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProBook-Regular.eot');
     src: local('FreightSans Pro Book'), local('FreightSansProBook-Regular'),
         url('FreightSansProBook-Regular.eot?#iefix') format('embedded-opentype'),
@@ -59,7 +59,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProBook';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProBook-Italic.eot');
     src: local('FreightSans Pro Book Italic'), local('FreightSansProBook-Italic'),
         url('FreightSansProBook-Italic.eot?#iefix') format('embedded-opentype'),
@@ -71,7 +71,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProLight';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProLight-Italic.eot');
     src: local('FreightSans Pro Light Italic'), local('FreightSansProLight-Italic'),
         url('FreightSansProLight-Italic.eot?#iefix') format('embedded-opentype'),
@@ -83,7 +83,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProMedium';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProMedium-Italic.eot');
     src: local('FreightSans Pro Medium Italic'), local('FreightSansProMedium-Italic'),
         url('FreightSansProMedium-Italic.eot?#iefix') format('embedded-opentype'),
@@ -95,7 +95,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProSemibold';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProSemibold-Italic.eot');
     src: local('FreightSans Pro Semibold Italic'), local('FreightSansProSemibold-Italic'),
         url('FreightSansProSemibold-Italic.eot?#iefix') format('embedded-opentype'),
@@ -107,7 +107,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProBold';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProBold-Italic.eot');
     src: local('FreightSans Pro Bold Italic'), local('FreightSansProBold-Italic'),
         url('FreightSansProBold-Italic.eot?#iefix') format('embedded-opentype'),
@@ -119,7 +119,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProSemibold';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProSemibold-Regular.eot');
     src: local('FreightSans Pro Semibold'), local('FreightSansProSemibold-Regular'),
         url('FreightSansProSemibold-Regular.eot?#iefix') format('embedded-opentype'),
@@ -131,7 +131,7 @@
 }
 
 @font-face {
-    font-family: 'FreightSansProMedium';
+    font-family: 'freight-sans-pro';
     src: url('FreightSansProMedium-Regular.eot');
     src: local('FreightSans Pro Medium'), local('FreightSansProMedium-Regular'),
         url('FreightSansProMedium-Regular.eot?#iefix') format('embedded-opentype'),
