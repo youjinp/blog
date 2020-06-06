@@ -61,5 +61,7 @@ module.exports = {
     // `gatsby-plugin-offline`,
     "gatsby-plugin-typescript",
     "gatsby-plugin-emotion",
+    // link from markdown pages to other pages without refresh
+    "gatsby-plugin-catch-links"
   ],
 };

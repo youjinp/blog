@@ -18,6 +18,7 @@ import {
 import { SunIcon } from "../components/icons/sunIcon";
 import { MoonIcon } from "../components/icons/moonIcon";
 import { useDarkMode } from "../context/darkModeContext";
+import { ClientOnly } from "../components/helpers/clientOnly";
 
 const BlogPostTemplate = (
   props: PageRendererProps & { pageContext: SitePageContext; data: Query }
@@ -246,34 +247,40 @@ const BlogPostTemplate = (
             <Spacing2 />
             <section dangerouslySetInnerHTML={{ __html: html }} />
             <Spacing4 />
-            <div
-              ref={lykeButtonRef}
-              css={css({
-                opacity: isSmallScreen || hideFloatingLyke ? 1 : 0,
-                transition: "all 0.5s cubic-bezier(0.165, 0.63, 0.14, 0.82)",
-              })}
-            >
-              <LykeButton
-                size={80}
-                lykesKey={post.frontmatter!.path!}
-                direction="row"
-                color="var(--primary)"
-                onLyked={() => {
-                  setLyked(true);
-                }}
-                onSetLykes={(n:number) => { setLykes(n); }}
-              />
-            </div>
+            <ClientOnly>
+              <div
+                ref={lykeButtonRef}
+                css={css({
+                  opacity: isSmallScreen || hideFloatingLyke ? 1 : 0,
+                  transition: "all 0.5s cubic-bezier(0.165, 0.63, 0.14, 0.82)",
+                })}
+              >
+                <LykeButton
+                  size={80}
+                  lykesKey={post.frontmatter!.path!}
+                  direction="row"
+                  color="var(--primary)"
+                  onLyked={() => {
+                    setLyked(true);
+                  }}
+                  onSetLykes={(n: number) => {
+                    setLykes(n);
+                  }}
+                />
+              </div>
+            </ClientOnly>
           </article>
         </section>
         <Spacing8 />
-        <FloatingLykesDisplay
-          lykesKey={post.frontmatter!.path!}
-          hide={isSmallScreen || hideFloatingLyke}
-          color="var(--primary)"
-          lykes={lykes}
-          lyked={lyked}
-        />
+        <ClientOnly>
+          <FloatingLykesDisplay
+            lykesKey={post.frontmatter!.path!}
+            hide={isSmallScreen || hideFloatingLyke}
+            color="var(--primary)"
+            lykes={lykes}
+            lyked={lyked}
+          />
+        </ClientOnly>
         <nav>
           <ul
             style={{

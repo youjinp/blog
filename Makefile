@@ -5,6 +5,9 @@ run:
 build:
 	@gatsby build
 
+serve:
+	@gatsby serve -H 0.0.0.0
+
 codegen:
 	# generate types for graphql
 	@npm run codegen
